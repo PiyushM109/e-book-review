@@ -65,3 +65,52 @@ A secure RESTful API for managing books and their reviews, featuring user authen
    npm i
    npm start
    ```
+
+
+---
+
+## 🧩 Schema Design
+
+### 📘 Book
+
+Represents a book entry.
+
+| Field   | Type   | Description     |
+|---------|--------|-----------------|
+| name    | String | Name of the book (required) |
+| author  | String | Author of the book (required) |
+| genre   | String | Genre/category (required)     |
+
+---
+
+### 🧑 User
+
+Represents a registered user of the system.
+
+| Field     | Type   | Description              |
+|-----------|--------|--------------------------|
+| name      | String | Full name (required)     |
+| email     | String | Unique user email (required) |
+| password  | String | Hashed password (required)   |
+
+---
+
+### 📝 Review
+
+Represents a user's review for a specific book.
+
+| Field    | Type     | Description                       |
+|----------|----------|-----------------------------------|
+| userId   | ObjectId | Reference to `User` (required)    |
+| bookId   | ObjectId | Reference to `Book` (required)    |
+| rating   | Number   | Rating out of 5 (required)        |
+| review   | String   | Textual review (required)         |
+
+---
+
+### 🔗 Relationships
+
+- A `Review` is associated with one `Book` and one `User`.
+- A `User` can have many `Reviews`.
+- A `Book` can be reviewed by many `Users`.
+
